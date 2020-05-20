@@ -99,22 +99,19 @@ Definition. An abelian group is a structure G such that
  and (for all a,b < G   :          a +{G} b = b +{G} a).
 
 Theorem NegZero. Let G be an abelian group.
-Then ~{G} 0{G} = 0{G}.
+ Then ~{G} 0{G} = 0{G}.
 
 Theorem ZeroAdd. Let G be an abelian group. Let a < G.
-Then 0{G} +{G} a = a.
+ Then 0{G} +{G} a = a.
 
 Theorem NegAdd. Let G be an abelian group. Let a,b < G.
-Then ~{G} (a +{G} b) = (~{G} a) -{G} b.
+ Then ~{G} (a +{G} b) = (~{G} a) -{G} b.
 Proof.
  ~{G} (a +{G} b) = (~{G} (a +{G} b)) +{G} ((a -{G} a) +{G} (b -{G} b)).
  (~{G} (a +{G} b)) +{G} ((a -{G} a) +{G} (b -{G} b))
  = ((~{G} (a +{G} b)) +{G} (a +{G} b)) +{G} ((~{G} a) -{G} b).
  ((~{G} (a +{G} b)) +{G} (a +{G} b)) +{G} ((~{G} a) -{G} b) = (~{G} a) -{G} b.
 Qed.
-
-Theorem. Let G be an abelian group. Let a,b,c,d,e,f < G.
-Then a +{G} (b +{G} (c +{G} (d +{G} (e +{G} f)))) = ((((a +{G} b) +{G} c) +{G} d) +{G} e) +{G} f.
 
 
 #004 field
@@ -740,7 +737,7 @@ Proof.
 Qed.
 
 Theorem. Let V,W be vector spaces over K. Let f < Hom(K,V,W).
-Assume Ker(f) = {0{V}}. Then f is injective.
+ Assume Ker(f) = {0{V}}. Then f is injective.
 Proof.
  Let us show that for all v,w < V : f[v] = f[w] => v = w.
   Let v,w < V. Assume f[v] = f[w].
