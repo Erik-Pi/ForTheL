@@ -381,7 +381,7 @@ Qed.
 Definition. Let A be an algebra over K. Let V be a vector space over K.
  A representation of A in V over K is an algebrahom over K from A to End(K,V).
 
-Let rep(p,A,V,K) stand for (A is an algebra over K and V is a vector space over K
+Let rep(p,K,A,V) stand for (A is an algebra over K and V is a vector space over K
                             and p is a representation of A in V over K).
 
 Definition. Let A be an algebra over K. A module over A over K is a structure V such that
@@ -409,29 +409,32 @@ Proof.
  For all v < V :                                   1{K} @@{V} v = v.
 Qed.
 
-Lemma. Let rep(p,A,V,K). Dom(p) = |A|.
+
+# 1.3.1 every representation gives a module
+
+Lemma. Let rep(p,K,A,V). Dom(p) = |A|.
 Proof.
  Then End(K,V) is an algebra over K.
  p is linear over K from A to End(K,V).
 Qed.
 
-Lemma. Let rep(p,A,V,K). Let a < A. a << Dom(p).     # This is the first ontological help he needs.
+Lemma. Let rep(p,K,A,V). Let a < A. a << Dom(p).     # This is the first ontological help needed.
 
-Lemma. Let rep(p,A,V,K). Let a < A. p[a] < End(K,V). # Somehow Naproche-SAD.exe uses much CPU here.
+Lemma. Let rep(p,K,A,V). Let a < A. p[a] < End(K,V). # Somehow Naproche-SAD.exe uses much CPU here.
 
 #Definition: M is V as a vector space. (could be introduced if something similar is needed later)
 
-Signature. Let rep(p,A,V,K). Mod(p,A,V,K) is a structure.
-Axiom. Let rep(p,A,V,K).  |Mod(p,A,V,K)| = |V|.
-Axiom. Let rep(p,A,V,K). 0{Mod(p,A,V,K)} = 0{V}.
-Axiom. Let rep(p,A,V,K). For all v,w < V :              v +{Mod(p,A,V,K)} w = v +{V} w.
-Axiom. Let rep(p,A,V,K). For all v < V :                  ~{Mod(p,A,V,K)} v = ~{V} v.
-Axiom. Let rep(p,A,V,K). For all x < K and all v < V :  x @{Mod(p,A,V,K)} v = x @{V} v.
-Axiom. Let rep(p,A,V,K). For all a < A and all v < V : a @@{Mod(p,A,V,K)} v = p[a][v].
+Signature. Let rep(p,K,A,V). rep2mod(p,K,A,V) is a structure.
+Axiom. Let rep(p,K,A,V).  |rep2mod(p,K,A,V)| = |V|.
+Axiom. Let rep(p,K,A,V). 0{rep2mod(p,K,A,V)} = 0{V}.
+Axiom. Let rep(p,K,A,V). For all v,w < V :              v +{rep2mod(p,K,A,V)} w = v +{V} w.
+Axiom. Let rep(p,K,A,V). For all v < V :                  ~{rep2mod(p,K,A,V)} v = ~{V} v.
+Axiom. Let rep(p,K,A,V). For all x < K and all v < V :  x @{rep2mod(p,K,A,V)} v = x @{V} v.
+Axiom. Let rep(p,K,A,V). For all a < A and all v < V : a @@{rep2mod(p,K,A,V)} v = p[a][v].
 
-Theorem. Let rep(p,A,V,K). Mod(p,A,V,K) is a module over A over K.
+Theorem. Let rep(p,K,A,V). rep2mod(p,K,A,V) is a module over A over K.
 Proof.
- Take a structure M such that M = Mod(p,A,V,K).
+ Take a structure M such that M = rep2mod(p,K,A,V).
  Let us show that M is an abelian group.
   0{M} < M.
   For all u,v < M : u +{M} v < M.
@@ -442,7 +445,7 @@ Proof.
    Let u,v,w < M.
    u +{M} (v +{M} w) = u +{V} (v +{V} w) = (u +{V} v) +{V} w = (u +{M} v) +{M} w.
   qed.
-  Let us show that for all u,v < M : u +{M} v = v +{M} u.  
+  Let us show that for all u,v < M : u +{M} v = v +{M} u.
    Let u,v < M.
    u +{M} v = u +{V} v = v +{V} u = v +{M} u.
   qed.
@@ -492,4 +495,79 @@ Proof.
 Qed.
 
 
-#Next: Every module gives a representation.
+# 1.3.2 every module gives a representation
+
+Definition. Let A be an algebra over K. Let V be a module over A over K.
+ mod2rep(K,A,V) is a function p such that Dom(p) = |A| and for all a < A :
+ (p[a] is a function such that Dom(p[a]) = |V| and for all v < V : p[a][v] = a @@{V} v).
+
+Theorem. Let A be an algebra over K. Let V be a module over A over K.
+ Then mod2rep(K,A,V) is a representation of A in V over K.
+Proof.
+ Take a function p such that p = mod2rep(K,A,V).
+ A is a vector space over K.
+ Then End(K,V) is a vector space over K.
+ Let us show that p is linear over K from A to End(K,V).
+  Let us show that p is a function from |A| to |End(K,V)|.
+   p is a function.
+   Dom(p) = |A|.
+   For all a < A : a << Dom(p).
+   Let us show that for all a < A : p[a] < End(K,V).   # Translation takes very long here.
+    Let a < A.
+    Let us show that p[a] is linear over K from V to V.
+     Dom(p[a]) = |V|.
+     Let us show that for all v < V : p[a][v] < V.
+      Let v < V.
+      p[a][v] = a @@{V} v < V.
+     qed.
+     Let us show that for all u,v < V : p[a][u +{V} v] = p[a][u] +{V} p[a][v].
+      Let u,v < V.
+      p[a][u +{V} v] = a @@{V} (u +{V} v) = (a @@{V} u) +{V} (a @@{V} v) = p[a][u] +{V} p[a][v].
+     qed.
+     Let us show that for all x < K and all v < V : p[a][x @{V} v] = x @{V} p[a][v].
+      Let x < K and v < V.
+      p[a][x @{V} v] = a @@{V} (x @{V} v) = x @{V} (a @@{V} v) = x @{V} p[a][v].
+     qed.
+    qed.
+   qed.  
+  qed.
+  Let us show that for all a,b < A : p[a +{A} b] = p[a] +{End(K,V)} p[b].
+   Let a,b < A.
+   Let us show that for all v < V : p[a +{A} b][v] = (p[a] +{End(K,V)} p[b])[v].
+    Let v < V.
+    p[a +{A} b][v] = (a +{A} b) @@{V} v = (a @@{V} v) +{V} (b @@{V} v) = p[a][v] +{V} p[b][v]
+    = (p[a] +{End(K,V)} p[b])[v].
+   qed.
+  qed.
+  Let us show that for all x < K and all a < A : p[x @{A} a] = x @{End(K,V)} p[a].
+   Let x < K and a < A.
+   Let us show that for all v < V : p[x @{A} a][v] = (x @{End(K,V)} p[a])[v].
+    Let v < V.
+    p[x @{A} a][v] = (x @{A} a) @@{V} v = x @{V} (a @@{V} v) = x @{V} p[a][v]
+    = (x @{End(K,V)} p[a])[v].
+   qed.
+  qed.
+ qed.
+ Let us show that p is an algebrahom over K from A to End(K,V).
+  Let us show that for all a,b < A : p[a *{A} b] = p[a] *{End(K,V)} p[b].
+   Let a,b < A.
+   Let us show that for all v < V : p[a *{A} b][v] = (p[a] *{End(K,V)} p[b])[v].
+    Let v < V.
+     p[a *{A} b][v] = (a *{A} b) @@{V} v = a @@{V} (b @@{V} v) = p[a][b @@{V} v] = p[a][p[b][v]]
+     = (p[a]*p[b])[v] = (p[a] *{End(K,V)} p[b])[v].
+   qed.
+  qed.
+  Let us show that p[1{A}] = 1{End(K,V)}.
+   Let us show that for all v < V : p[1{A}][v] = 1{End(K,V)}[v].
+    Let v < V.
+    p[1{A}][v] = 1{A} @@{V} v = v = id{|V|}[v] = 1{End(K,V)}[v].
+   qed.
+  qed.
+ qed.
+Qed.
+
+
+# 1.4 categories and functors
+
+
+# 1.5 quivers
