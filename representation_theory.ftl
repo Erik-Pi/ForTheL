@@ -33,7 +33,7 @@ Definition FunId. id{A} is a function h such that Dom(h) = A and for all a << A 
 Definition FunRestr. Let f be a function. Let A be subset of Dom(f). f|A is a function h such that
  Dom(h) = A and for all x << A we have h[x] = f[x].
 
-Signature. Let f,g be functions. f*g is a function.
+Signature. Let f,g be objects. f*g is an object.
 
 Definition. Let f,g be functions.
  f and g are composable iff for all x << Dom(g) we have g[x] << Dom(f).
@@ -362,7 +362,7 @@ Proof.
 Qed.
 
 
-# 1.2. K-algebra homomorphisms
+# 1.2 K-algebra homomorphisms
 
 Definition. Let A,B be algebras over K.
  An algebrahom over K from A to B is a function f such that
@@ -568,6 +568,27 @@ Qed.
 
 
 # 1.4 categories and functors
+
+[synonym object/-s] [synonym morphism/-s]
+
+Signature. A precategory is a notion.
+Let C denote a precategory.
+
+Signature. Ob(C) is a set.
+Definition. An object in C is an element of Ob(C).
+
+Signature. Let X,Y be objects in C. C(X,Y) is a set.
+Definition. Let X,Y << Ob(C). A morphism from X to Y in C is an element of C(X,Y).
+
+Signature. Let X << Ob(C). 1{X,C} is an object.
+
+Definition. A category is a precategory C such that 
+     (for all X,Y,Z << Ob(C) and all f << C(X,Y) and all g << C(Y,Z) : g*f << C(X,Z))
+ and (for all X << Ob(C) : 1{X,C} << C(X,X))
+ and (for all X,Y << Ob(C) and all f << C(X,Y) : f*1{X,C} = f)
+ and (for all X,Y << Ob(C) and all f << C(Y,X) : 1{X,C}*f = f)
+ and (for all W,X,Y,Z << Ob(C) and all f << C(W,X) and all g << C(X,Y) and all h << C(Y,Z) : 
+      h*(g*f) = (h*g)*f).
 
 
 # 1.5 quivers
