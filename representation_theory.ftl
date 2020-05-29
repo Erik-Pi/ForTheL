@@ -569,7 +569,7 @@ Qed.
 
 # 1.4 categories and functors
 
-[synonym object/-s] [synonym morphism/-s]
+[synonym object/-s] [synonym morphism/-s] [synonym category/categories] [synonym functor/-s]
 
 Signature. A precategory is a notion.
 Let C denote a precategory.
@@ -577,10 +577,10 @@ Let C denote a precategory.
 Signature. Ob(C) is a set.
 Definition. An object in C is an element of Ob(C).
 
-Signature. Let X,Y be objects in C. C(X,Y) is a set.
+Signature. Let X,Y be objects. C(X,Y) is a set.    # These objects are not the ones defined above.
 Definition. Let X,Y << Ob(C). A morphism from X to Y in C is an element of C(X,Y).
 
-Signature. Let X << Ob(C). 1{X,C} is an object.
+Signature. Let X be an object. 1{X,C} is an object.
 
 Definition. A category is a precategory C such that 
      (for all X,Y,Z << Ob(C) and all f << C(X,Y) and all g << C(Y,Z) : g*f << C(X,Z))
@@ -590,5 +590,41 @@ Definition. A category is a precategory C such that
  and (for all W,X,Y,Z << Ob(C) and all f << C(W,X) and all g << C(X,Y) and all h << C(Y,Z) : 
       h*(g*f) = (h*g)*f).
 
+Signature. A family is a notion.
+
+Signature. Let F be a family. Let x be an object. F(x) is an object.
+
+Definition. Let C and D be categories. A functor from C to D is a family F such that
+     (for all X << Ob(C) : F(X) << Ob(D))
+ and (for all X,Y << Ob(C) and all f << C(X,Y) : F(f) << D(F(X),F(Y)))
+ and (for all X << Ob(C) : F(1{X,C}) = 1{F(X),D})
+ and (for all X,Y,Z << Ob(C) and all f << C(X,Y) and all g << C(Y,D) : F(g*f) = F(g)*F(f)).
+
+Definition. Let C and D be categories. Let F and G be functors from C to D.
+ A natural transformation from F to G over C to D is a family n such that
+     (for all X << Ob(C) : n(X) << D(F(X),G(X)))
+ and (for all X,Y << Ob(C) and all h << C(X,Y) : G(h)*n(X) = n(Y)*F(h)).
+
 
 # 1.5 quivers
+
+Signature. 0 is an object.
+Signature. 1 is an object.
+Signature. s is an object.
+Signature. t is an object.
+
+Definition. A quiver is a family Q such that
+     (Q(0) is a set)
+ and (Q(1) is a set)
+ and (Q(s) is a function from Q(1) to Q(0))
+ and (Q(t) is a function from Q(1) to Q(0)).
+
+Axiom. Any object is a set.   # This helps with ontological checking.
+
+Let Q denote a quiver.
+
+Definition. A vertex of Q is an element of Q(0).
+
+Definition. An arrow of Q is an element of Q(1).
+
+Definition. Let a be an arrow of Q. Let i be a vertex of Q. a starts in i in Q iff Q(s)[a] = i.
