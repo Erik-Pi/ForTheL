@@ -412,7 +412,7 @@ Qed.
 
 # 1.3.1 every representation gives a module
 
-Lemma. Let rep(p,K,A,V). Dom(p) = |A|.
+Lemma. Let rep(p,K,A,V). Dom(p) = |A|.               # I use "Lemma" for ontological arguments.
 Proof.
  Then End(K,V) is an algebra over K.
  p is linear over K from A to End(K,V).
@@ -422,7 +422,7 @@ Lemma. Let rep(p,K,A,V). Let a < A. a << Dom(p).     # This is the first ontolog
 
 Lemma. Let rep(p,K,A,V). Let a < A. p[a] < End(K,V). # Somehow Naproche-SAD.exe uses much CPU here.
 
-#Definition: M is V as a vector space. (could be introduced if something similar is needed later)
+#Definition. M is V as a vector space. (could be introduced if something similar is needed later on)
 
 Signature. Let rep(p,K,A,V). rep2mod(p,K,A,V) is a structure.
 Axiom. Let rep(p,K,A,V).  |rep2mod(p,K,A,V)| = |V|.
@@ -608,6 +608,8 @@ Definition. Let C and D be categories. Let F and G be functors from C to D.
 
 # 1.5 quivers
 
+[synonym vertex/vertices] [synonym arrow/-s]
+
 Signature. 0 is an object.
 Signature. 1 is an object.
 Signature. s is an object.
@@ -619,12 +621,15 @@ Definition. A quiver is a family Q such that
  and (Q(s) is a function from Q(1) to Q(0))
  and (Q(t) is a function from Q(1) to Q(0)).
 
-Axiom. Any object is a set.   # This helps with ontological checking.
-
 Let Q denote a quiver.
+
+Lemma. Q(0) is a set.
+Lemma. Q(1) is a set.
 
 Definition. A vertex of Q is an element of Q(0).
 
 Definition. An arrow of Q is an element of Q(1).
 
 Definition. Let a be an arrow of Q. Let i be a vertex of Q. a starts in i in Q iff Q(s)[a] = i.
+
+Definition. Let a be an arrow of Q. Let i be a vertex of Q. a ends in i in Q iff Q(t)[a] = i.
