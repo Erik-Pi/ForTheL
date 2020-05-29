@@ -475,4 +475,4 @@ Definition. An arrow of Q is an element of Q(1).
 
 Definition. Let a be an arrow of Q. Let i be a vertex of Q. a starts in i in Q iff Q(s)[a] = i.
 
-Definition. Let a be an arrow of Q. Let i be a vertex of Q. a starts in i in Q iff Q(t)[a] = i.
+Definition. Let a be an arrow of Q. Let i be a vertex of Q. a ends in i in Q iff Q(t)[a] = i.
