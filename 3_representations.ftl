@@ -4,23 +4,22 @@ Let K denote a field.
 
 # 1.4 A-module homomorphisms
 
-Definition ModuleHom. Let A be an algebra over K. Let M,N be modules over A over K.
+Definition ModuleHom. Let A,M,N be objects.
  A modulehom over A over K from M to N is a map f such that
-     (f is from |M| to |N|)
+     (A is an algebra over K)
+ and (M,N are modules over A over K)
+ and (f is from |M| to |N|)
  and (for all x,y < M             : f(x +{M} y) = f(x) +{N} f(y))
  and (for all a < A and all x < M : f(a @@{M} x) = a @@{N} f(x)).
-
-Signature. Let A be an algebra over K. Let M,N be modules over A over K.
- Hom(K,A,M,N) is a structure.
 
 Axiom. Let A be an algebra over K. Let M,N be modules over A over K.
  |Hom(K,A,M,N)| is the set of maps f such that f is a modulehom over A over K from M to N.
 
 Lemma. Let A be an algebra over K. Let M,N be modules over A over K.
- Then Hom(K,A,M,N) and Hom(K,M,N) are structure and |Hom(K,A,M,N)| is subset of |Hom(K,M,N)|.
+ |Hom(K,A,M,N)| is subset of |Hom(K,M,N)|.
 Proof.
- Take a structure V such that V = Hom(K,M,N).
- Take a structure U such that U = Hom(K,A,M,N).
+ Take V = Hom(K,M,N).
+ Take U = Hom(K,A,M,N).
  Let us show that |U| is subset of |V|.
   Let us show that for all f < U : f < V.
    Let f < U.
@@ -50,11 +49,6 @@ Proof.
  qed.
 Qed.
 
-Lemma. Let M,N be vector spaces over K. Let f,g < Hom(K,M,N). Then f +{Hom(K,M,N)} g is a map.
-
-Lemma Reminder1. Let M,N be vector spaces over K. Let f,g be maps. Let f,g < Hom(K,M,N).
- Then for all x < M: (f +{Hom(K,M,N)} g is a map and (f +{Hom(K,M,N)} g)(x) = f(x) +{N} g(x)).
-
 Lemma. Let A be an algebra over K. Let M,N be modules over A over K. Let f,g < Hom(K,A,M,N).
  Then f +{Hom(K,M,N)} g < Hom(K,A,M,N).
 Proof.
@@ -62,8 +56,8 @@ Proof.
  f,g are maps.
  For all x < M: (f +{Hom(K,M,N)} g is a map and (f +{Hom(K,M,N)} g)(x) = f(x) +{N} g(x)).
  f +{Hom(K,M,N)} g is a map and for all x < M : (f +{Hom(K,M,N)} g)(x) = f(x) +{N} g(x).
- Take a structure V such that V = Hom(K,M,N).
- Take a structure U such that U = Hom(K,A,M,N).
+ Take V = Hom(K,M,N).
+ Take U = Hom(K,A,M,N).
  V is a vector space over K.
  Let us show that f +{V} g < U.
   f and g are maps.
@@ -100,8 +94,8 @@ Proof.
  f is a map.
  For all x < M: (a @{Hom(K,M,N)} f is a map and (a @{Hom(K,M,N)} f)(x) = a @{N} f(x)).
  a @{Hom(K,M,N)} f is a map and for all x < M : (a @{Hom(K,M,N)} f)(x) = a @{N} f(x).
- Take a structure V such that V = Hom(K,M,N).
- Take a structure U such that U = Hom(K,A,M,N).
+ Take V = Hom(K,M,N).
+ Take U = Hom(K,A,M,N).
  V is a vector space over K.
  Let us show that a @{V} f < U.
   f is a map.
@@ -133,8 +127,8 @@ Theorem. Let A be an algebra over K. Let M,N be modules over A over K.
  Hom(K,M,N) is a vector space over K and Hom(K,A,M,N) is a subspace of Hom(K,M,N) over K.
 Proof.
  Hom(K,M,N) is a vector space over K.
- Take a structure V such that V = Hom(K,M,N).
- Take a structure U such that U = Hom(K,A,M,N).
+ Take V = Hom(K,M,N).
+ Take U = Hom(K,A,M,N).
  Let us show that U is a subspace of V over K.
   |U| is subset of |V|.
   For all f,g < U             : f +{V} g < U.
@@ -166,7 +160,7 @@ Qed.
 
 
 Theorem. Let A be an algebra over K. Let M,N be modules over A over K.
- Hom(K,A,M,N) is a structure and a vector space over K.
+ Hom(K,A,M,N) is a vector space over K.
 Proof.
  Hom(K,M,N) is a vector space over K and Hom(K,A,M,N) is a subspace of Hom(K,M,N) over K.
 Qed.
