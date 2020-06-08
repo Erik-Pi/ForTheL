@@ -1,12 +1,10 @@
 [read representations/1_linear_algebra_axioms.ftl]
 
-[synonym algebra/-s] [synonym module/-s]
-
 Let K denote a field.
 
 # 1.1 K-algebras
 
-Definition Algebra. An algebra over K is a structure A such that
+Definition Algebra. An algebra over K is an object A such that
      (A is a vector space over K)
  and (A is a ring)
  and (for all x < K and all a,b < A : x @{A} (a *{A} b) = (x @{A} a) *{A} b = a *{A} (x @{A} b)).
@@ -29,14 +27,17 @@ Axiom. Let A be an algebra over K. Then id{|A|} is an algebrahom over K from A t
 
 # 1.3 representations and A-modules
 
-Definition. Let A be an algebra over K. Let V be a vector space over K.
- A representation of A in V over K is an algebrahom over K from A to End(K,V).
+Definition. Let A,V be objects. A representation of A in V over K is an object p such that
+     (A is an algebra over K)
+ and (V is a vector space over K)
+ and (p is an algebrahom over K from A to End(K,V)).
 
 Let rep(p,K,A,V) stand for (A is an algebra over K and V is a vector space over K
                             and p is a representation of A in V over K).
 
-Definition Module. Let A be an algebra over K. A module over A over K is a structure V such that
-     (V is a vector space over K)
+Definition. Let A be an object. A module over A over K is an object V such that
+     (A is an algebra over K)
+ and (V is a vector space over K)
  and (for all a < A and all v < V : a @@{V} v < V)
  and (for all a < A and all v,w < V :             a @@{V} (v +{V} w) = (a @@{V} v) +{V} (a @@{V} w))
  and (for all x < K and all a < A and all v < V : a @@{V} (x @{V} v) = x @{V} (a @@{V} v))
@@ -52,19 +53,6 @@ Axiom. Let V be a vector space over K. K is an algebra over K and V is a module 
 
 # 1.3.1 every representation gives a module
 
-Axiom. Let rep(p,K,A,V). p is a map.
-
-Axiom. Let rep(p,K,A,V). Dom{p) = |A|.               # I use "Axiom" for ontological arguments.
-
-Axiom. Let rep(p,K,A,V). Let a < A. a << Dom{p).     # This is the first ontological help needed.
-
-Axiom. Let V be a vector space over K. End(K,V) is a structure.
-
-Axiom. Let V be a vector space over K. |End(K,V)| is a set.   # Translation is very slow here.
-
-Axiom. Let rep(p,K,A,V). Let a < A. p(a) < End(K,V).
-
-Signature. Let rep(p,K,A,V). rep2mod(p,K,A,V) is a structure.
 Axiom. Let rep(p,K,A,V).  |rep2mod(p,K,A,V)| = |V|.
 Axiom. Let rep(p,K,A,V). 0{rep2mod(p,K,A,V)} = 0{V}.
 Axiom. Let rep(p,K,A,V). For all v,w < V :              v +{rep2mod(p,K,A,V)} w = v +{V} w.
@@ -77,9 +65,9 @@ Axiom. Let rep(p,K,A,V). rep2mod(p,K,A,V) is a module over A over K.
 
 # 1.3.2 every module gives a representation
 
-Definition. Let A be an algebra over K. Let V be a module over A over K.
- mod2rep(K,A,V) is a map p such that Dom{p) = |A| and for all a < A :
- (p(a) is a map such that Dom{p(a)) = |V| and for all v < V : p(a)(v) = a @@{V} v).
+Axiom. Let A be an algebra over K. Let V be a module over A over K.
+ mod2rep(K,A,V) is a map p such that Dmn(p) = |A| and for all a < A :
+ (p(a) is a map such that Dmn(p(a)) = |V| and for all v < V : p(a)(v) = a @@{V} v).
 
 Axiom. Let A be an algebra over K. Let V be a module over A over K.
  Then mod2rep(K,A,V) is a representation of A in V over K.
